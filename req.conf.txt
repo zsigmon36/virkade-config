@@ -1,0 +1,20 @@
+﻿[req]
+distinguished_name = req_virkade
+x509_extensions = v3_req
+prompt = no
+[req_virkade]
+C = US
+ST = AR
+L = FAYETTEVILLE
+O = VirKade LLC
+OU = IT
+CN = virkade.io
+[v3_req]
+keyUsage = keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = cms.virkade.io
+DNS.2 = service.virkade.io
+DNS.3 = 192.168.1.24
+DNS.4 = 192.168.1.86
