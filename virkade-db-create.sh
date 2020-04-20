@@ -2,9 +2,6 @@
 lsblk
 sudo mount /dev/md0 /opt/app/virkade
 sudo /etc/init.d/postgresql restart
-sudo nano /etc/fstab
-/dev/md0        /opt/app/virkade        /ntfs   defaults        0       0
-ctrl o
 
 
 apt-get install postgresql-9.6;
