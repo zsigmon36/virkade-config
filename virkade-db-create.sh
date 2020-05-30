@@ -4,11 +4,19 @@
 
 
 --create raid
+parted /dev/<disk>
+mklabel msdos
+mkpart primary ext4 1049kB 256GB
+
 mdadm --create /dev/md0 --level=raid5 --raid-devices=3 /dev/sda1 /dev/sdb1 /dev/sdc1
 mdadm --detail /dev/md0
 mdadm --manage /dev/md0 --add /dev/sdc1
 mdadm --detail --scan --verbose | tee -a /etc/mdadm/mdadm.conf
 mkfs.ext4 /dev/md0
+
+mdadm /dev/md0 --add /dev/sde
+mdadm --misc --examine /dev/sdc1
+mdadm --stop /dev/md0
 
 --Disk mounting
 lsblk
